@@ -18,11 +18,11 @@ import androidx.room.PrimaryKey
 )
 
 data class Jadwal(
-    @PrimaryKey
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val namaDokter: String,
     val namaPasien: String,
     val noHp: String,
     val tanggalKonsultasi: String,
-    val status: String,
+    val status: String
 )
