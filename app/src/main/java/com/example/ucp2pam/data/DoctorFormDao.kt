@@ -25,3 +25,23 @@ interface DokterDao {
     @Query("SELECT COUNT(*) FROM dokter")
     fun getDoctorCount(): Flow<Int>  // Returns the number of doctors
 }
+
+
+@Dao
+interface JadwalDao {
+    @Insert
+    suspend fun insertJadwal(jadwal: Jadwal)
+
+    @Update
+    suspend fun updateJadwal(jadwal: Jadwal)
+
+    @Delete
+    suspend fun deleteJadwal(jadwal: Jadwal)
+
+    @Query("SELECT * FROM jadwal")
+    fun getAllJadwal(): Flow<List<Jadwal>>
+
+    // New method to get patient count
+    @Query("SELECT COUNT(*) FROM jadwal")
+    fun getPatientCount(): Flow<Int>  // Returns the number of patients
+}
