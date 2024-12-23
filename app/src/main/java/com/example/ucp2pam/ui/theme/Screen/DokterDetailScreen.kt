@@ -149,3 +149,10 @@ fun DokterCard(dokter: Dokter, navController: NavController, onDelete: () -> Uni
                 modifier = Modifier
                     .padding(bottom = 8.dp)
             )
+            Text("Nama: ${dokter.nama}", style = MaterialTheme.typography.bodyMedium)
+            Text("Spesialis: ${dokter.spesialis}", style = MaterialTheme.typography.bodySmall,color = spesialisColor)
+            Text("Klinik: ${dokter.klinik}", style = MaterialTheme.typography.bodySmall)
+            Text("No HP: ${dokter.noHp}", style = MaterialTheme.typography.bodySmall)
+            Text("Jam Kerja: ${dokter.jamKerja}", style = MaterialTheme.typography.bodySmall)
+
+
