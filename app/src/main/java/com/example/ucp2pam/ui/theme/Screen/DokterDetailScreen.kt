@@ -133,3 +133,13 @@ fun DokterCard(dokter: Dokter, navController: NavController, onDelete: () -> Uni
         else -> Color.Gray
     }
 
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
