@@ -123,3 +123,13 @@ fun DokterDetailScreen(
     }
 }
 
+@Composable
+fun DokterCard(dokter: Dokter, navController: NavController, onDelete: () -> Unit) {
+    val spesialisColor = when (dokter.spesialis.lowercase()) {
+        "Gigi" -> Color.Black
+        "Anak" -> Color.Blue
+        "Obgyn" -> Color.Magenta
+        "Umum" -> Color.Red
+        else -> Color.Gray
+    }
+
