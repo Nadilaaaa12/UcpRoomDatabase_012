@@ -41,3 +41,16 @@ fun JadwalDetailScreen(navController: NavController, jadwalList: List<Jadwal>, v
     var showDialog by remember { mutableStateOf(false) }
     var jadwalToDelete by remember { mutableStateOf<Jadwal?>(null) }
 
+
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        // TopAppBar
+        TopAppBar(
+            title = { Text("Daftar Jadwal") },
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        )
+
