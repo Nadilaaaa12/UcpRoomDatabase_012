@@ -54,3 +54,14 @@ fun JadwalDetailScreen(navController: NavController, jadwalList: List<Jadwal>, v
             modifier = Modifier.fillMaxWidth()
         )
 
+
+        LazyColumn {
+            items(jadwalList) { jadwal ->
+                // For each item, display a card
+                JadwalCard(jadwal = jadwal, navController = navController, viewModel = viewModel(), onDeleteClick = { selectedJadwal ->
+                    jadwalToDelete = selectedJadwal
+                    showDialog = true
+                })
+            }
+        }
+
