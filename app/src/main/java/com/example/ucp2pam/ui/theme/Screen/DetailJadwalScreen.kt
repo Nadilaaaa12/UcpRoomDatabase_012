@@ -129,3 +129,22 @@ fun JadwalCard(jadwal: Jadwal, navController: NavController, viewModel: MainView
             Text("Status: ${jadwal.status}", style = MaterialTheme.typography.bodySmall)
 
 
+            Row {
+                // Delete Button
+                Button(onClick = { onDeleteClick(jadwal) }) {
+                    Text("Hapus")
+                }
+
+                // Spacer for spacing between buttons
+                Spacer(modifier = Modifier.padding(start = 8.dp))
+
+                // Edit Button
+                Button(onClick = {
+                    navController.navigate("editJadwal/${jadwal.id}") // Navigating to the Edit screen
+                }) {
+                    Text("Edit")
+                }
+            }
+        }
+    }
+}
