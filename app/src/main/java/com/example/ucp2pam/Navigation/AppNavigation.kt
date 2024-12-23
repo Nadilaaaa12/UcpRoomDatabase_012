@@ -23,6 +23,7 @@ fun AppNavigation(dokterList: List<Dokter>,jadwalList : List<Jadwal>, viewModel:
         composable("home") {
             // HomeScreen menerima navController dan dokterList
             HomeScreen(navController = navController)
+
         }
         composable("dokter") {
             // DokterScreen menerima navController dan viewModel
