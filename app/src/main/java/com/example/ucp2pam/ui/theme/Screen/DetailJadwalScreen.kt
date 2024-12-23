@@ -100,3 +100,32 @@ fun JadwalDetailScreen(navController: NavController, jadwalList: List<Jadwal>, v
     }
 }
 
+@Composable
+fun JadwalCard(jadwal: Jadwal, navController: NavController, viewModel: MainViewModel, onDeleteClick: (Jadwal) -> Unit) {
+
+    Card(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp),
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
+
+            Text(
+                text = "Nama Pasien: ${jadwal.namaPasien}",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+
+            Text("Nama Dokter: ${jadwal.namaDokter}", style = MaterialTheme.typography.bodyMedium)
+            // Display No HP
+            Text("No HP: ${jadwal.noHp}", style = MaterialTheme.typography.bodySmall)
+            // Display Tanggal Konsultasi
+            Text("Tanggal Konsultasi: ${jadwal.tanggalKonsultasi}", style = MaterialTheme.typography.bodySmall)
+            // Display Status
+            Text("Status: ${jadwal.status}", style = MaterialTheme.typography.bodySmall)
+
+
