@@ -65,3 +65,38 @@ fun JadwalDetailScreen(navController: NavController, jadwalList: List<Jadwal>, v
             }
         }
 
+        if (showDialog && jadwalToDelete != null) {
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                title = { Text("Konfirmasi Hapus") },
+                text = { Text("Apakah Anda yakin ingin menghapus jadwal ini?") },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            // Delete the selected jadwal
+                            jadwalToDelete?.let { jadwal ->
+                                viewModel.deleteJadwal(jadwal)
+                                showDialog = false
+                                jadwalToDelete = null
+                                Toast.makeText(navController.context, "Jadwal berhasil dihapus", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    ) {
+                        Text("Ya")
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = {
+                            showDialog = false
+                            jadwalToDelete = null
+                        }
+                    ) {
+                        Text("Tidak")
+                    }
+                }
+            )
+        }
+    }
+}
+
