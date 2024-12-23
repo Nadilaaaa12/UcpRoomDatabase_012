@@ -48,3 +48,37 @@ fun DokterDetailScreen(
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)  .background(Color(0xFFA6C641))) {
 
 
+        TopAppBar(
+            title = { Text("Daftar Dokter") },
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
+            },
+            actions = {
+                IconButton(onClick = { navController.navigate("home") }) {
+                    Icon(Icons.Filled.Home, contentDescription = "Home")
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+
+        LazyColumn {
+            items(dokterList) { dokter ->
+                DokterCard(
+                    dokter = dokter,
+                    navController = navController,
+                    onDelete = {
+                        // Set the doctor to be deleted
+                        dokterToDelete = dokter
+                        showDialog = true
+                    }
+                )
+            }
+        }
+
+        Spacer(Modifier.height(150.dp))
+
