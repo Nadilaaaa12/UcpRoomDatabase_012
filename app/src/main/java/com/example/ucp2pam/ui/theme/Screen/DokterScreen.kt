@@ -32,3 +32,4 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
     var showDialog by remember { mutableStateOf(false) }
     var doctorAdded by remember { mutableStateOf(false) }
 
+    fun addDokter() {
