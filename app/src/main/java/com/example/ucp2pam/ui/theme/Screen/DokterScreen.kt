@@ -127,3 +127,22 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     shape = MaterialTheme.shapes.medium
                 )
 
+                Column {
+                    Text("Jam Kerja", style = MaterialTheme.typography.bodyLarge)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        RadioButton(
+                            selected = jamKerja == "Pagi",
+                            onClick = { jamKerja = "Pagi" },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFF2E7D32))
+                        )
+                        Text("Pagi")
+                        RadioButton(
+                            selected = jamKerja == "Malam",
+                            onClick = { jamKerja = "Malam" },
+                            colors = RadioButtonDefaults.colors(selectedColor = Color(0xFF2E7D32))
+                        )
+                        Text("Malam")
+                    }
+                }
+
