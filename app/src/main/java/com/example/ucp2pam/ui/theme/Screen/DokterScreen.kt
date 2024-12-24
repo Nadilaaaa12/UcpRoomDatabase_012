@@ -87,3 +87,11 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
 
+                OutlinedTextField(
+                    value = nama,
+                    onValueChange = { nama = it },
+                    label = { Text("Nama") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium
+                )
+
