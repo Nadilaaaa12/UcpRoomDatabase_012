@@ -77,3 +77,11 @@ fun EditJadwalScreen(
                 textStyle = MaterialTheme.typography.bodyLarge
             )
 
+            OutlinedTextField(
+                value = noHp,
+                onValueChange = { noHp = it },
+                label = { Text("No HP") },
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.bodyLarge
+            )
+
