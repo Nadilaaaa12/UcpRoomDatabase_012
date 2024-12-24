@@ -38,3 +38,8 @@ fun EditJadwalScreen(
 
     var showDialog by remember { mutableStateOf(false) }
 
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFE3F2FD))
+    ) {
