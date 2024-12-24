@@ -33,3 +33,11 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
     var doctorAdded by remember { mutableStateOf(false) }
 
     fun addDokter() {
+        if (nama.isNotEmpty() && spesialis.isNotEmpty() && klinik.isNotEmpty() && noHp.isNotEmpty() && jamKerja.isNotEmpty()) {
+            val dokter = Dokter(
+                nama = nama,
+                spesialis = spesialis,
+                klinik = klinik,
+                noHp = noHp,
+                jamKerja = jamKerja
+            )
