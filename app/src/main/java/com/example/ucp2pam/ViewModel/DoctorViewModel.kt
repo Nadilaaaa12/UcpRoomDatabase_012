@@ -25,3 +25,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             dokterDao.insertDokter(dokter)
         }
     }
+    fun deleteDokter(dokter: Dokter) {
+        viewModelScope.launch {
+            dokterDao.deleteDokter(dokter)
+        }
+    }
+
