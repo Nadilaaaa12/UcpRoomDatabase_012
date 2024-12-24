@@ -85,3 +85,11 @@ fun EditJadwalScreen(
                 textStyle = MaterialTheme.typography.bodyLarge
             )
 
+            OutlinedTextField(
+                value = tanggalKonsultasi,
+                onValueChange = { tanggalKonsultasi = it },
+                label = { Text("Tanggal Konsultasi") },
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.bodyLarge
+            )
+
