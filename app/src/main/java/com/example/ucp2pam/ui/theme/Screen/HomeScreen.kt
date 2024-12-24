@@ -186,3 +186,11 @@ fun HomeScreen(navController: NavController) {
                                 modifier = Modifier.padding(bottom = 8.dp)
                             )
 
+
+                            Text(
+                                text = "Mari kita tingkatkan pelayanan kesehatan bersama.",
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = Color.Gray
+                            )
+                        }
+
