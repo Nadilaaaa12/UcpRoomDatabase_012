@@ -194,3 +194,32 @@ fun HomeScreen(navController: NavController) {
                             )
                         }
 
+                        Spacer(modifier = Modifier.height(16.dp))
+
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
+                            Button(
+                                onClick = { navController.navigate("dokter") },
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text("Dokter")
+                            }
+
+                            Button(
+                                onClick = { navController.navigate("jadwal") },
+                                modifier = Modifier.weight(1f)
+                            ) {
+                                Text("Jadwal")
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    )
+}
+
