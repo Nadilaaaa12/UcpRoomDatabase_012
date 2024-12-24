@@ -103,3 +103,4 @@ fun EditJadwalScreen(
 
             Button(
                 onClick = {
+                    if (namaDokter.isNotEmpty() && namaPasien.isNotEmpty() && noHp.isNotEmpty() && tanggalKonsultasi.isNotEmpty() && status.isNotEmpty()) {
