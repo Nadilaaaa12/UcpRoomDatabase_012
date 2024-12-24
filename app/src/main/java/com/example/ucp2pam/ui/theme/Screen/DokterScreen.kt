@@ -154,3 +154,19 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     Text("Tambah Dokter", color = Color.White, fontSize = 16.sp)
                 }
 
+                if (doctorAdded) {
+                    AlertDialog(
+                        onDismissRequest = { doctorAdded = false },
+                        title = { Text("Success", color = Color(0xFF2E7D32)) },
+                        text = { Text("Dokter berhasil ditambahkan.") },
+                        confirmButton = {
+                            TextButton(onClick = { doctorAdded = false }) {
+                                Text("OK", color = Color(0xFF2E7D32))
+                            }
+                        }
+                    )
+                }
+            }
+        }
+    )
+}
