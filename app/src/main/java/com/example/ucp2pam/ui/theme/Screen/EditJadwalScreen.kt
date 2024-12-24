@@ -122,3 +122,5 @@ fun EditJadwalScreen(
                 title = { Text("Konfirmasi", style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)) },
                 text = { Text("Apakah Anda yakin ingin menyimpan perubahan jadwal?") },
                 confirmButton = {
+                    Button(
+                        onClick = {
