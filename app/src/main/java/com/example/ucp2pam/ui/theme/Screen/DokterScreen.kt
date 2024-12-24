@@ -118,3 +118,12 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     shape = MaterialTheme.shapes.medium
                 )
 
+                OutlinedTextField(
+                    value = noHp,
+                    onValueChange = { noHp = it },
+                    label = { Text("No HP") },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+                    shape = MaterialTheme.shapes.medium
+                )
+
