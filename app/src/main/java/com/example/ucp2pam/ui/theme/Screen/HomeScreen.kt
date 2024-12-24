@@ -162,3 +162,11 @@ fun HomeScreen(navController: NavController) {
 
                         Spacer(modifier = Modifier.height(16.dp)) // Spacer untuk spasi
 
+
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(16.dp),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
