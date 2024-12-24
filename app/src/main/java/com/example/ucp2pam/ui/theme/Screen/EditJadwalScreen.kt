@@ -36,3 +36,5 @@ fun EditJadwalScreen(
     var tanggalKonsultasi by remember { mutableStateOf(jadwal.tanggalKonsultasi) }
     var status by remember { mutableStateOf(jadwal.status) }
 
+    var showDialog by remember { mutableStateOf(false) }
+
