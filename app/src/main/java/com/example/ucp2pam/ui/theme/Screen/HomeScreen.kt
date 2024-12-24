@@ -170,3 +170,11 @@ fun HomeScreen(navController: NavController) {
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
+
+                            Image(
+                                painter = painterResource(id = R.drawable.logors), // Ganti dengan logo Anda di folder `res/drawable`
+                                contentDescription = "Logo",
+                                modifier = Modifier
+                                    .size(120.dp)
+                                    .padding(bottom = 16.dp)
+                            )
