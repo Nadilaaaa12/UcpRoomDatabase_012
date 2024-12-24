@@ -19,3 +19,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val dokterList: LiveData<List<Dokter>> = dokterDao.getAllDokter().asLiveData()
     val jadwalList: LiveData<List<Jadwal>> = jadwalDao.getAllJadwal().asLiveData()
 
+
+    fun addDokter(dokter: Dokter) {
+        viewModelScope.launch {
+            dokterDao.insertDokter(dokter)
+        }
+    }
