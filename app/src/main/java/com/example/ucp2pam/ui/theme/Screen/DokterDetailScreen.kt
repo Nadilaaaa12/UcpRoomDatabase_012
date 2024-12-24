@@ -1,35 +1,19 @@
 package com.example.ucp2pam.ui.theme.Screen
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.ucp2pam.ViewModel.MainViewModel
@@ -40,16 +24,18 @@ import com.example.ucp2pam.data.Dokter
 fun DokterDetailScreen(
     navController: NavController,
     dokterList: List<Dokter>,
-    viewModel: MainViewModel // Assuming ViewModel for managing data
+    viewModel: MainViewModel
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var dokterToDelete by remember { mutableStateOf<Dokter?>(null) }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)  .background(Color(0xFFA6C641))) {
-
-
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFE3F2FD))
+    ) {
         TopAppBar(
-            title = { Text("Daftar Dokter") },
+            title = { Text("Daftar Dokter", fontWeight = FontWeight.Bold) },
             navigationIcon = {
                 IconButton(onClick = { navController.popBackStack() }) {
                     Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
@@ -65,58 +51,44 @@ fun DokterDetailScreen(
 
         Spacer(Modifier.height(8.dp))
 
-
-        LazyColumn {
+        LazyColumn(
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxSize()
+        ) {
             items(dokterList) { dokter ->
                 DokterCard(
                     dokter = dokter,
-                    navController = navController,
                     onDelete = {
-                        // Set the doctor to be deleted
                         dokterToDelete = dokter
                         showDialog = true
                     }
                 )
             }
         }
-
-        Spacer(Modifier.height(150.dp))
-
-
-        IconButton(
-            onClick = { navController.navigate("home") },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ) {
-            Icon(
-                imageVector = Icons.Filled.Home,
-                contentDescription = "Home"
-            )
-        }
     }
-
 
     if (showDialog && dokterToDelete != null) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
-            title = { Text("Konfirmasi Hapus") },
+            title = { Text("Konfirmasi Hapus", fontWeight = FontWeight.Bold) },
             text = { Text("Apakah Anda yakin ingin menghapus dokter ${dokterToDelete!!.nama}?") },
             confirmButton = {
                 Button(
                     onClick = {
                         dokterToDelete?.let {
-                            // Call the delete method from the ViewModel
                             viewModel.deleteDokter(it)
                             showDialog = false
-                            navController.popBackStack() // Navigate back after deletion
                         }
-                    }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Red)
                 ) {
-                    Text("Yes")
+                    Text("Hapus", color = Color.White)
                 }
             },
             dismissButton = {
                 Button(onClick = { showDialog = false }) {
-                    Text("No")
+                    Text("Batal")
                 }
             }
         )
@@ -124,43 +96,51 @@ fun DokterDetailScreen(
 }
 
 @Composable
-fun DokterCard(dokter: Dokter, navController: NavController, onDelete: () -> Unit) {
+fun DokterCard(dokter: Dokter, onDelete: () -> Unit) {
     val spesialisColor = when (dokter.spesialis.lowercase()) {
-        "Gigi" -> Color.Black
-        "Anak" -> Color.Blue
-        "Obgyn" -> Color.Magenta
-        "Umum" -> Color.Red
+        "gigi" -> Color(0xFFD32F2F)
+        "anak" -> Color(0xFF1976D2)
+        "obgyn" -> Color(0xFF388E3C)
+        "umum" -> Color(0xFFFBC02D)
         else -> Color.Gray
     }
 
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+            .padding(vertical = 8.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White)
     ) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
+                .fillMaxWidth()
         ) {
             Text(
                 text = dokter.nama,
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier
-                    .padding(bottom = 8.dp)
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 4.dp)
             )
-
-            Text("Nama: ${dokter.nama}", style = MaterialTheme.typography.bodyMedium)
-            Text("Spesialis: ${dokter.spesialis}", style = MaterialTheme.typography.bodySmall,color = spesialisColor)
+            Text("Spesialis: ${dokter.spesialis}", color = spesialisColor, style = MaterialTheme.typography.bodySmall)
             Text("Klinik: ${dokter.klinik}", style = MaterialTheme.typography.bodySmall)
             Text("No HP: ${dokter.noHp}", style = MaterialTheme.typography.bodySmall)
             Text("Jam Kerja: ${dokter.jamKerja}", style = MaterialTheme.typography.bodySmall)
 
-            Button(
-                onClick = { onDelete() },
-                modifier = Modifier.padding(top = 16.dp)
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                horizontalArrangement = Arrangement.End
             ) {
-                Text("Hapus Dokter")
+                IconButton(onClick = { onDelete() }) {
+                    Icon(
+                        imageVector = Icons.Filled.Delete,
+                        contentDescription = "Delete",
+                        tint = Color.Red
+                    )
+                }
             }
         }
     }
