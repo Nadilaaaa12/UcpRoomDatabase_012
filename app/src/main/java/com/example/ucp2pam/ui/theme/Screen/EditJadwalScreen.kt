@@ -43,3 +43,13 @@ fun EditJadwalScreen(
             .fillMaxSize()
             .background(Color(0xFFE3F2FD))
     ) {
+        TopAppBar(
+            title = { Text("Edit Jadwal", style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)) },
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
+            },
+            colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = Color(0xFF1976D2), titleContentColor = Color.White)
+        )
+
