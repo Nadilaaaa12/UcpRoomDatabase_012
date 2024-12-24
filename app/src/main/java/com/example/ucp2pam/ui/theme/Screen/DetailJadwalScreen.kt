@@ -2,11 +2,13 @@ package com.example.ucp2pam.ui.theme.Screen
 
 import android.widget.Toast
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,6 +31,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -43,9 +47,12 @@ fun JadwalDetailScreen(navController: NavController, jadwalList: List<Jadwal>, v
     var showDialog by remember { mutableStateOf(false) }
     var jadwalToDelete by remember { mutableStateOf<Jadwal?>(null) }
 
-
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        // TopAppBar
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .background(Color(0xFFE3F2FD))
+    ) {
         TopAppBar(
             title = { Text("Daftar Jadwal") },
             navigationIcon = {
@@ -56,67 +63,72 @@ fun JadwalDetailScreen(navController: NavController, jadwalList: List<Jadwal>, v
             modifier = Modifier.fillMaxWidth()
         )
 
+        Spacer(modifier = Modifier.height(8.dp))
 
-        LazyColumn {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
             items(jadwalList) { jadwal ->
-                // For each item, display a card
-                JadwalCard(jadwal = jadwal, navController = navController, viewModel = viewModel(), onDeleteClick = { selectedJadwal ->
-                    jadwalToDelete = selectedJadwal
-                    showDialog = true
-                })
+                JadwalCard(
+                    jadwal = jadwal,
+                    navController = navController,
+                    onDeleteClick = { selectedJadwal ->
+                        jadwalToDelete = selectedJadwal
+                        showDialog = true
+                    }
+                )
             }
         }
+    }
 
-        if (showDialog && jadwalToDelete != null) {
-            AlertDialog(
-                onDismissRequest = { showDialog = false },
-                title = { Text("Konfirmasi Hapus") },
-                text = { Text("Apakah Anda yakin ingin menghapus jadwal ini?") },
-                confirmButton = {
-                    TextButton(
-                        onClick = {
-                            // Delete the selected jadwal
-                            jadwalToDelete?.let { jadwal ->
-                                viewModel.deleteJadwal(jadwal)
-                                showDialog = false
-                                jadwalToDelete = null
-                                Toast.makeText(navController.context, "Jadwal berhasil dihapus", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    ) {
-                        Text("Ya")
-                    }
-                },
-                dismissButton = {
-                    TextButton(
-                        onClick = {
+    if (showDialog && jadwalToDelete != null) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            title = { Text("Konfirmasi Hapus") },
+            text = { Text("Apakah Anda yakin ingin menghapus jadwal ini?") },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        jadwalToDelete?.let { jadwal ->
+                            viewModel.deleteJadwal(jadwal)
                             showDialog = false
                             jadwalToDelete = null
+                            Toast.makeText(navController.context, "Jadwal berhasil dihapus", Toast.LENGTH_SHORT).show()
                         }
-                    ) {
-                        Text("Tidak")
                     }
+                ) {
+                    Text("Ya")
                 }
-            )
-        }
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = {
+                        showDialog = false
+                        jadwalToDelete = null
+                    }
+                ) {
+                    Text("Tidak")
+                }
+            }
+        )
     }
 }
 
 @Composable
-fun JadwalCard(jadwal: Jadwal, navController: NavController, viewModel: MainViewModel, onDeleteClick: (Jadwal) -> Unit) {
+fun JadwalCard(jadwal: Jadwal, navController: NavController, onDeleteClick: (Jadwal) -> Unit) {
 
     Card(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(8.dp),
-        elevation = CardDefaults.cardElevation(4.dp)
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFFFFFFF))
     ) {
         Column(
             modifier = Modifier
                 .padding(16.dp)
-                .background(Color(0xFFACACAC))
         ) {
-
             Text(
                 text = "Nama Pasien: ${jadwal.namaPasien}",
                 style = MaterialTheme.typography.titleLarge,
@@ -124,26 +136,26 @@ fun JadwalCard(jadwal: Jadwal, navController: NavController, viewModel: MainView
             )
 
             Text("Nama Dokter: ${jadwal.namaDokter}", style = MaterialTheme.typography.bodyMedium)
-            // Display No HP
             Text("No HP: ${jadwal.noHp}", style = MaterialTheme.typography.bodySmall)
-            // Display Tanggal Konsultasi
             Text("Tanggal Konsultasi: ${jadwal.tanggalKonsultasi}", style = MaterialTheme.typography.bodySmall)
-            // Display Status
             Text("Status: ${jadwal.status}", style = MaterialTheme.typography.bodySmall)
 
+            Spacer(modifier = Modifier.height(16.dp))
 
-            Row {
-                // Delete Button
-                Button(onClick = { onDeleteClick(jadwal) }) {
-                    Text("Hapus")
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Button(
+                    onClick = { onDeleteClick(jadwal) },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color.Red),
+                ) {
+                    Text("Hapus", color = Color.White)
                 }
 
-                // Spacer for spacing between buttons
-                Spacer(modifier = Modifier.padding(start = 8.dp))
-
-                // Edit Button
                 Button(onClick = {
-                    navController.navigate("editJadwal/${jadwal.id}") // Navigating to the Edit screen
+                    navController.navigate("editJadwal/${jadwal.id}")
                 }) {
                     Text("Edit")
                 }
