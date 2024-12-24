@@ -105,3 +105,7 @@ fun EditJadwalScreen(
                 onClick = {
                     if (namaDokter.isNotEmpty() && namaPasien.isNotEmpty() && noHp.isNotEmpty() && tanggalKonsultasi.isNotEmpty() && status.isNotEmpty()) {
                         showDialog = true
+                    } else {
+                        Toast.makeText(navController.context, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                    }
+                },
