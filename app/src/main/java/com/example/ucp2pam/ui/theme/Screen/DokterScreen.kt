@@ -41,3 +41,5 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                 noHp = noHp,
                 jamKerja = jamKerja
             )
+            viewModel.addDokter(dokter)
+
