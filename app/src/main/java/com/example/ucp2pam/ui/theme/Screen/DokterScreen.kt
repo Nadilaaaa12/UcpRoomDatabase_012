@@ -63,4 +63,27 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     Text("Tambah Dokter", style = MaterialTheme.typography.titleLarge, color = Color.White)
                 },
                 navigationIcon = {
+                    IconButton(onClick = { navController.navigate("home") }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back", tint = Color.White)
+                    }
+                },
+                modifier = Modifier.fillMaxWidth(),
+                colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color(0xFF4CAF50))
+            )
+        },
+        content = { paddingValues ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues)
+                    .padding(16.dp)
+                    .background(Color(0xFFF0F8FF)),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Text(
+                    "Form Tambah Dokter",
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = Color(0xFF2E7D32),
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
 
