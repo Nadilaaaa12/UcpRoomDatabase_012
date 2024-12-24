@@ -53,3 +53,13 @@ fun EditJadwalScreen(
             colors = TopAppBarDefaults.mediumTopAppBarColors(containerColor = Color(0xFF1976D2), titleContentColor = Color.White)
         )
 
+        Spacer(Modifier.height(16.dp))
+
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+                .background(Color.White, shape = MaterialTheme.shapes.medium)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
