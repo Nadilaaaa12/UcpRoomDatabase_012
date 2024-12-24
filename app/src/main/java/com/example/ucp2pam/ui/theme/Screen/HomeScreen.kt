@@ -65,3 +65,7 @@ fun HomeScreen(navController: NavController) {
     val dokterCountFlow = dokterDao.getDoctorCount().collectAsState(initial = 0)
     val patientCountFlow = jadwalDao.getPatientCount().collectAsState(initial = 0)
 
+
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val drawerScope = rememberCoroutineScope()
+
