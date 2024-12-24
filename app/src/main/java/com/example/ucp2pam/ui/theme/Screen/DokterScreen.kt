@@ -95,3 +95,18 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     shape = MaterialTheme.shapes.medium
                 )
 
+                Column {
+                    Text("Spesialis", style = MaterialTheme.typography.bodyLarge)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    spesialisOptions.forEach { option ->
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(
+                                selected = spesialis == option,
+                                onClick = { spesialis = option },
+                                colors = RadioButtonDefaults.colors(selectedColor = Color(0xFF2E7D32))
+                            )
+                            Text(text = option, modifier = Modifier.padding(start = 8.dp))
+                        }
+                    }
+                }
+
