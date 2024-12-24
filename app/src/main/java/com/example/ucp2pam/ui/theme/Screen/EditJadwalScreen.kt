@@ -135,4 +135,6 @@ fun EditJadwalScreen(
                                 )
                             )
                             navController.popBackStack()
+                            showDialog = false
+                        },
 
