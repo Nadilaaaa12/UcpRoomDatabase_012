@@ -223,3 +223,10 @@ fun HomeScreen(navController: NavController) {
     )
 }
 
+@Composable
+fun DrawerContent(navController: NavController) {
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+            .background(Color.White)
+    ) {
