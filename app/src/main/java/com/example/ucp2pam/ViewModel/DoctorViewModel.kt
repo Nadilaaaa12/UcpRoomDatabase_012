@@ -38,3 +38,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+
+    fun updateJadwal(updatedJadwal: Jadwal) {
+        viewModelScope.launch {
+            // Update the Jadwal in the database
+            jadwalDao.updateJadwal(updatedJadwal)
+            // No need to update LiveData manually, it will automatically reflect changes
+        }
+    }
+
