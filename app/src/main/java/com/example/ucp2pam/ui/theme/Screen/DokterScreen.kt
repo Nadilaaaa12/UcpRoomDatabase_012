@@ -43,3 +43,10 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
             )
             viewModel.addDokter(dokter)
 
+            doctorAdded = true
+            nama = ""
+            spesialis = ""
+            klinik = ""
+            noHp = ""
+            jamKerja = ""
+        } else {
