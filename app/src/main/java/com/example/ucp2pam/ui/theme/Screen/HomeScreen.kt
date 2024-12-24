@@ -246,5 +246,10 @@ fun DrawerContent(navController: NavController) {
         }
 
 
+        TextButton(onClick = { navController.navigate("Detail Dokter") }) {
+            Text(text = "Daftar Dokter", style = MaterialTheme.typography.bodyLarge, color = Color.Black)
+        }
+
+
 
 
