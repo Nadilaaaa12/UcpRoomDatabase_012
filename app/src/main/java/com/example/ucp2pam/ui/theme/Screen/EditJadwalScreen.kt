@@ -69,3 +69,11 @@ fun EditJadwalScreen(
                 onOptionSelected = { namaDokter = it },
             )
 
+            OutlinedTextField(
+                value = namaPasien,
+                onValueChange = { namaPasien = it },
+                label = { Text("Nama Pasien") },
+                modifier = Modifier.fillMaxWidth(),
+                textStyle = MaterialTheme.typography.bodyLarge
+            )
+
