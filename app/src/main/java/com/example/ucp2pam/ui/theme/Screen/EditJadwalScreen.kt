@@ -24,3 +24,7 @@ fun EditJadwalScreen(
     jadwal: Jadwal?,
     viewModel: MainViewModel
 ) {
+    if (jadwal == null) {
+        return
+    }
+
