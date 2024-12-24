@@ -109,3 +109,10 @@ fun EditJadwalScreen(
                         Toast.makeText(navController.context, "Please fill all fields", Toast.LENGTH_SHORT).show()
                     }
                 },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF42A5F5))
+            ) {
+                Text("Save Changes", color = Color.White)
+            }
+        }
+
