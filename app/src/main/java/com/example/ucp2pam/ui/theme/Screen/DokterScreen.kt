@@ -56,3 +56,11 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
 
     val spesialisOptions = listOf("Gigi", "Anak", "Obgyn", "Umum")
 
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text("Tambah Dokter", style = MaterialTheme.typography.titleLarge, color = Color.White)
+                },
+                navigationIcon = {
+
