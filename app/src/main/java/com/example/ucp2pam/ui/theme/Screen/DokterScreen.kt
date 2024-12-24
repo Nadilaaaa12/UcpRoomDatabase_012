@@ -29,3 +29,6 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
     var noHp by remember { mutableStateOf("") }
     var jamKerja by remember { mutableStateOf("") }
 
+    var showDialog by remember { mutableStateOf(false) }
+    var doctorAdded by remember { mutableStateOf(false) }
+
