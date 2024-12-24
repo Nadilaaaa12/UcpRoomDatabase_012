@@ -137,4 +137,10 @@ fun EditJadwalScreen(
                             navController.popBackStack()
                             showDialog = false
                         },
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF66BB6A))
+                    ) {
+                        Text("Yes", color = Color.White)
+                    }
+                },
+                dismissButton = {
 
