@@ -103,3 +103,31 @@ fun HomeScreen(navController: NavController) {
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
+
+                            Card(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp),
+                                shape = RoundedCornerShape(16.dp),
+                                elevation = CardDefaults.cardElevation(4.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .background(Color.White)
+                                        .padding(16.dp)
+                                        .fillMaxWidth()
+                                ) {
+                                    Text(
+                                        text = "Jumlah Dokter",
+                                        style = MaterialTheme.typography.titleMedium,
+                                        modifier = Modifier.padding(bottom = 8.dp),
+                                        color = Color.Black
+                                    )
+                                    Text(
+                                        text = "${dokterCountFlow.value}",
+                                        style = MaterialTheme.typography.bodyLarge,
+                                        color = Color.Black
+                                    )
+                                }
+                            }
+
