@@ -63,3 +63,9 @@ fun EditJadwalScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
+            DropdownMenuComponent(
+                options = dokterList.map { it.nama },
+                selectedOption = namaDokter,
+                onOptionSelected = { namaDokter = it },
+            )
+
