@@ -56,3 +56,8 @@ fun HomeScreen(navController: NavController) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
+
+    val database = AppDatabase.getDatabase(context)
+    val dokterDao = database.dokterDao()
+    val jadwalDao = database.jadwalDao()
+
