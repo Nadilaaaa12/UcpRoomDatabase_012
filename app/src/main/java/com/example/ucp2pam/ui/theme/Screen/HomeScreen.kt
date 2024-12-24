@@ -178,3 +178,11 @@ fun HomeScreen(navController: NavController) {
                                     .size(120.dp)
                                     .padding(bottom = 16.dp)
                             )
+
+                            Text(
+                                text = "Selamat Datang Di Citra Medika",
+                                style = MaterialTheme.typography.titleLarge,
+                                color = Color.Black,
+                                modifier = Modifier.padding(bottom = 8.dp)
+                            )
+
