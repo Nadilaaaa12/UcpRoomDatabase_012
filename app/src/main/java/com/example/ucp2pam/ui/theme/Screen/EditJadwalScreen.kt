@@ -124,3 +124,13 @@ fun EditJadwalScreen(
                 confirmButton = {
                     Button(
                         onClick = {
+                            viewModel.updateJadwal(
+                                Jadwal(
+                                    id = jadwal.id,
+                                    namaDokter = namaDokter,
+                                    namaPasien = namaPasien,
+                                    noHp = noHp,
+                                    tanggalKonsultasi = tanggalKonsultasi,
+                                    status = status
+                                )
+                            )
