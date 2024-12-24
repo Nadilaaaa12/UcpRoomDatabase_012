@@ -131,3 +131,34 @@ fun HomeScreen(navController: NavController) {
                                 }
                             }
 
+
+                            Card(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(8.dp),
+                                shape = RoundedCornerShape(16.dp),
+                                elevation = CardDefaults.cardElevation(4.dp)
+                            ) {
+                                Column(
+                                    modifier = Modifier
+                                        .background(Color.White)
+                                        .padding(16.dp)
+                                        .fillMaxWidth()
+                                ) {
+                                    Text(
+                                        text = "Jumlah Pasien",
+                                        style = MaterialTheme.typography.titleMedium,
+                                        modifier = Modifier.padding(bottom = 8.dp),
+                                        color = Color.Black
+                                    )
+                                    Text(
+                                        text = "${patientCountFlow.value}",
+                                        style = MaterialTheme.typography.bodyLarge,
+                                        color = Color.Black
+                                    )
+                                }
+                            }
+                        }
+
+                        Spacer(modifier = Modifier.height(16.dp)) // Spacer untuk spasi
+
