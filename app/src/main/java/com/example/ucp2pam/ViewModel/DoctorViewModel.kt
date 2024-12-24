@@ -47,3 +47,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+
+    fun deleteJadwal(jadwal: Jadwal) {
+        viewModelScope.launch {
+            // Delete the Jadwal from the database
+            jadwalDao.deleteJadwal(jadwal)
+            // No need to update LiveData manually, it will automatically reflect changes
+        }
+    }
+}
