@@ -14,3 +14,15 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            UCP2PAMTheme(darkTheme = false) {
+
+                val dokterList = viewModel.dokterList.observeAsState(emptyList()).value
+                val jadwalList = viewModel.jadwalList.observeAsState(emptyList()).value
+                AppNavigation(dokterList = dokterList, jadwalList = jadwalList, viewModel = viewModel)
+            }
+        }
+    }
+}
