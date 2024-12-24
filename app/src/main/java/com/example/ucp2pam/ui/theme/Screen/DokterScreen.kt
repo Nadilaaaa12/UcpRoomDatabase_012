@@ -146,3 +146,11 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     }
                 }
 
+                Button(
+                    onClick = { addDokter() },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF2E7D32))
+                ) {
+                    Text("Tambah Dokter", color = Color.White, fontSize = 16.sp)
+                }
+
