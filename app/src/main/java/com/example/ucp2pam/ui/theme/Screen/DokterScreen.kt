@@ -54,3 +54,5 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
         }
     }
 
+    val spesialisOptions = listOf("Gigi", "Anak", "Obgyn", "Umum")
+
