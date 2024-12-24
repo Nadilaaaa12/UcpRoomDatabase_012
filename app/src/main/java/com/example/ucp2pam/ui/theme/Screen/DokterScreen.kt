@@ -110,3 +110,11 @@ fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
                     }
                 }
 
+                OutlinedTextField(
+                    value = klinik,
+                    onValueChange = { klinik = it },
+                    label = { Text("Klinik") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.medium
+                )
+
