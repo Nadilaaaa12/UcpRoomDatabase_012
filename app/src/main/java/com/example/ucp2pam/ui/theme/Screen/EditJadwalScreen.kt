@@ -30,3 +30,9 @@ fun EditJadwalScreen(
 
     val dokterList by viewModel.dokterList.observeAsState(emptyList())
 
+    var namaDokter by remember { mutableStateOf(jadwal.namaDokter) }
+    var namaPasien by remember { mutableStateOf(jadwal.namaPasien) }
+    var noHp by remember { mutableStateOf(jadwal.noHp) }
+    var tanggalKonsultasi by remember { mutableStateOf(jadwal.tanggalKonsultasi) }
+    var status by remember { mutableStateOf(jadwal.status) }
+
