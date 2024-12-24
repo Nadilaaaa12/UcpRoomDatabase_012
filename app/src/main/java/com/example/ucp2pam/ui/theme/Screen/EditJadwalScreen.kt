@@ -143,4 +143,12 @@ fun EditJadwalScreen(
                     }
                 },
                 dismissButton = {
-
+                    Button(onClick = { showDialog = false }, colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEF5350))) {
+                        Text("No", color = Color.White)
+                    }
+                },
+                containerColor = Color.White
+            )
+        }
+    }
+}
