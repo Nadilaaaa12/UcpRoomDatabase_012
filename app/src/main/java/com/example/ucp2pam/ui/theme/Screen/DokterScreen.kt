@@ -23,3 +23,9 @@ import com.example.ucp2pam.data.Dokter
 @Composable
 fun DokterScreen(viewModel: MainViewModel, navController: NavController) {
     val dokterList by viewModel.dokterList.observeAsState(emptyList())
+    var nama by remember { mutableStateOf("") }
+    var spesialis by remember { mutableStateOf("") }
+    var klinik by remember { mutableStateOf("") }
+    var noHp by remember { mutableStateOf("") }
+    var jamKerja by remember { mutableStateOf("") }
+
