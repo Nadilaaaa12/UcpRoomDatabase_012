@@ -98,3 +98,8 @@ fun HomeScreen(navController: NavController) {
                             .fillMaxSize()
                             .padding(16.dp)
                     ) {
+
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                        ) {
