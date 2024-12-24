@@ -31,3 +31,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+
+    fun addJadwal(jadwal: Jadwal) {
+        viewModelScope.launch {
+            jadwalDao.insertJadwal(jadwal)
+        }
+    }
+
