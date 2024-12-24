@@ -28,3 +28,5 @@ fun EditJadwalScreen(
         return
     }
 
+    val dokterList by viewModel.dokterList.observeAsState(emptyList())
+
